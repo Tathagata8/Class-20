@@ -1,5 +1,5 @@
 var ball, ball1;
-
+var rect1, rect2;
 
 function setup() {
   createCanvas(800,400);
@@ -8,6 +8,14 @@ function setup() {
 
   ball1 = createSprite(650,350,80,30);
   ball1.shapeColor = "blue";
+
+  rect1 = createSprite(300,150,100, 30);
+  rect1.shapeColor = "yellow";
+
+  rect2 = createSprite(700,250,100,30);
+  rect2.shapeColor = "pink";
+
+
 }
 
 
@@ -16,21 +24,22 @@ function draw() {
   
   ball1.x = World.mouseX;
   ball1.y = World.mouseY;
-  
-if(ball1.x-ball.x < ball.width/2 + ball1.width/2
-  && ball.x-ball1.x < ball.width/2 + ball1.width/2
-  && ball1.y - ball.y < ball.height/2 + ball1.height/2
-  && ball.y - ball1.y < ball.height/2 + ball1.height/2 ) {
-  ball.shapeColor = "green";
-  ball1.shapeColor = "green";
-}else{
-  ball.shapeColor = "red";
-  ball1.shapeColor = "blue";
+ 
+  if(isTouching(ball1,rect1)){
 
 
-}
+    rect1.shapeColor = "green";
+    ball1.shapeColor = "green";
 
+  }else{
+
+    rect1.shapeColor = "red";
+    ball1.shapeColor = "blue";
+
+  }
 
   drawSprites();
   
 }
+
+
